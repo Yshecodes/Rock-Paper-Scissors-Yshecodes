@@ -59,6 +59,8 @@ function displayGif(gifPath) {
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const gifCache = {};
+
 async function getRandomGif(query) {
   const url = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${query}&limit=1&offset=${Math.floor(
     Math.random() * 50
@@ -68,7 +70,8 @@ async function getRandomGif(query) {
     const response = await fetch(url);
     const data = await response.json();
     if (data.data.length > 0) {
-      return data.data[0].images.original.url;
+      const gifUrl = data.data[0].images.original.url;
+      return gifUrl;
     } else {
       throw new Error("No GIFs found");
     }
@@ -117,6 +120,7 @@ async function gamePlay(userChoice, computerChoice) {
 
   const gifUrl = await getRandomGif(gifQuery);
   if (gifUrl) {
+    gifCache[gifQuery] = gifUrl;
     displayGif(gifUrl);
   }
 
