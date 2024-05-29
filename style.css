@@ -180,6 +180,11 @@ label > span.material-symbols-outlined {
   margin: auto;
 }
 
+#volumeControl {
+  width: 100%;
+  max-width: 300px;
+}
+
 @media (max-width: 798px) {
   header {
     padding: 20px;
