@@ -33,9 +33,9 @@ const choices = ["rock", "paper", "scissors"];
 let isDraw = false;
 
 const clearDisplay = () => {
-  user.innerHTML = "";
-  computer.innerHTML = "";
-  resultDisplay.innerHTML = "";
+  user.innerText = "";
+  computer.innerText = "";
+  resultDisplay.innerText = "";
 };
 
 const handleClick = async (e) => {
@@ -114,7 +114,7 @@ async function gamePlay(userChoice, computerChoice) {
   } else {
     isDraw = true;
     gifQuery = "draw";
-    resultMessage = `It's a DRAW😑<br />Choose again!`;
+    resultMessage = `It's a DRAW😑\nChoose again!`;
     soundEffect.drawSound.play();
   }
 
@@ -124,7 +124,7 @@ async function gamePlay(userChoice, computerChoice) {
     displayGif(gifUrl);
   }
 
-  resultDisplay.innerHTML = resultMessage;
+  resultDisplay.innerText = resultMessage;
 }
 
 const modal = document.querySelector("#modal");
